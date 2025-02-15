@@ -1,6 +1,6 @@
-# TODO List с маршрутизацией
+# TODO List с Context API
 
-Приложение для управления списком задач с использованием React Router и JSON Server.
+Приложение для управления списком задач с использованием React Context API, React Router и JSON Server.
 
 ## Функциональность
 
@@ -10,22 +10,24 @@
 - ✅ Отметка о выполнении
 - 🛣️ Маршрутизация между страницами
 - 📱 Адаптивный дизайн
+- 🎭 Использование Context API вместо Props Drilling
 
 ## Технологии
 
 - React 18
 - React Router 7
+- React Context API
 - JSON Server
 - Vite
-- CSS
+- CSS Variables
 
 ## Установка и запуск
 
 1. Клонировать репозиторий:
 
 ```bash
-git clone https://github.com/rustam-rama/TODO4-JSON-Server.git
-cd TODO4-JSON-Server
+git clone https://github.com/rustam-rama/TODO5-JSON-Server.git
+cd TODO5-JSON-Server
 ```
 
 2. Установить зависимости:
@@ -49,6 +51,7 @@ npm run dev
 ## Структура проекта
 
 - `/src/components` - React компоненты
+- `/src/context` - Context API провайдеры
 - `/src/hooks` - Кастомные хуки
 - `/src/config.js` - Конфигурация API
 - `/db.json` - База данных JSON Server

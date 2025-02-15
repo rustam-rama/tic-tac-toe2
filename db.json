@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": "949e",
-      "title": "Сходить в спортзал",
-      "completed": true
-    },
-    {
       "id": "cb07",
       "title": "Спросить когда зарплата?",
       "completed": true
@@ -13,7 +8,7 @@
     {
       "id": "37eb",
       "title": "Позвонить подруге",
-      "completed": false
+      "completed": true
     },
     {
       "id": "07e7",
@@ -27,7 +22,7 @@
     },
     {
       "id": "7962",
-      "title": "Зайти вечером к Любе",
+      "title": "Зайти вечером к Любей",
       "completed": false
     },
     {
@@ -43,6 +38,11 @@
     {
       "id": "afbd",
       "title": "Сходить в магазин",
+      "completed": false
+    },
+    {
+      "id": "d6bf",
+      "title": "Сходить в спортзал",
       "completed": false
     }
   ]

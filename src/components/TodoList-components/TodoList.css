@@ -1,10 +1,6 @@
 /* Основной контейнер */
 .todo-list-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #1a1b26;
-  border-radius: 20px;
+  composes: container;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 

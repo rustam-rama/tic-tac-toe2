@@ -1,10 +1,5 @@
 .todo-page {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #1a1b26;
-  border-radius: 20px;
-  color: #fff;
+  composes: container;
 }
 
 .back-button {

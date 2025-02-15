@@ -1,13 +1,14 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import { useTodo } from "../../context/TodoContext";
 
-const TodoForm = ({ onAdd }) => {
+const TodoForm = () => {
   const [title, setTitle] = useState("");
+  const { addTodo } = useTodo();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      onAdd(title.trim());
+      addTodo(title.trim());
       setTitle("");
     }
   };
@@ -20,16 +21,13 @@ const TodoForm = ({ onAdd }) => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Какая задача на сегодня?"
         className="todo-input"
+        maxLength={20}
       />
       <button type="submit" className="add-button">
         Добавить
       </button>
     </form>
   );
-};
-
-TodoForm.propTypes = {
-  onAdd: PropTypes.func.isRequired,
 };
 
 export default TodoForm;

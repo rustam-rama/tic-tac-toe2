@@ -1,63 +1,45 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
-import { API_URL } from "../../config";
+import { useTodo } from "../../context/TodoContext";
 import "./TodoPage.css";
 
 const TodoPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [todo, setTodo] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState("");
-  const [status, setStatus] = useState({ loading: true, error: null });
 
-  useEffect(() => {
-    const fetchTodo = async () => {
-      try {
-        const response = await fetch(`${API_URL}/${id}`);
-        if (!response.ok) throw new Error("Задача не найдена");
-        const data = await response.json();
-        setTodo(data);
-        setEditText(data.title);
-      } catch (err) {
-        setStatus((prev) => ({ ...prev, error: err.message }));
-      } finally {
-        setStatus((prev) => ({ ...prev, loading: false }));
-      }
-    };
+  // Получаем данные и функции из контекста
+  const { todos, updateTodo, deleteTodo } = useTodo();
 
-    fetchTodo();
-  }, [id]);
+  // Находим задачу в контексте
+  const todo = todos.find((item) => item.id === id);
+
+  // Если задача не найдена
+  if (!todo) return <Navigate to="/" replace />;
+
+  // При первом рендере устанавливаем текст
+  if (!editText && todo.title) {
+    setEditText(todo.title);
+  }
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`${API_URL}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: editText }),
-      });
-      if (!response.ok) throw new Error("Ошибка при обновлении");
-      const updatedTodo = await response.json();
-      setTodo(updatedTodo);
+      await updateTodo(id, { title: editText });
       setIsEditing(false);
     } catch (err) {
-      setStatus((prev) => ({ ...prev, error: err.message }));
+      console.error(err);
     }
   };
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-      if (!response.ok) throw new Error("Ошибка при удалении");
+      await deleteTodo(id);
       navigate("/");
     } catch (err) {
-      setStatus((prev) => ({ ...prev, error: err.message }));
+      console.error(err);
     }
   };
-
-  if (status.loading) return <div className="loading">Загрузка...</div>;
-  if (status.error) return <Navigate to="/404" replace />;
-  if (!todo) return <Navigate to="/404" replace />;
 
   return (
     <div className="todo-page">

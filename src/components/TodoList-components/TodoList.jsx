@@ -1,17 +1,15 @@
 import { useState, useCallback, useMemo } from "react";
 import debounce from "lodash/debounce";
-import { useFetchTodo, useAddTodo, useUpdateTodo } from "../../hooks";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 import TodoControls from "./TodoControls";
 import "./TodoList.css";
+import { useTodo } from "../../context/TodoContext";
 
 const TodoList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSorted, setIsSorted] = useState(false);
-  const { todos, setTodos } = useFetchTodo();
-  const { addTodo } = useAddTodo(setTodos);
-  const { updateTodo } = useUpdateTodo(setTodos);
+  const { todos } = useTodo();
 
   const debouncedSearch = useCallback(
     debounce((query) => {
@@ -47,7 +45,7 @@ const TodoList = () => {
   return (
     <div className="todo-list-container">
       <h1 className="todo-list-title">Список задач</h1>
-      <TodoForm onAdd={addTodo} />
+      <TodoForm />
       <TodoControls
         searchQuery={searchQuery}
         onSearch={debouncedSearch}
@@ -57,13 +55,7 @@ const TodoList = () => {
       <div className="todo-items-container">
         {filteredAndSortedTodos.length ? (
           filteredAndSortedTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggleComplete={(id, completed) =>
-                updateTodo(id, { completed: !completed })
-              }
-            />
+            <TodoItem key={todo.id} todo={todo} />
           ))
         ) : (
           <div className="no-todos">Нет задач</div>

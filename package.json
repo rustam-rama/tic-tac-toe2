@@ -14,7 +14,7 @@
     "vite": "^3.2.11"
   },
   "scripts": {
-    "dev": "vite --port 5174 --host --open",
+    "dev": "vite --port 5172 --host --open",
     "build": "vite build",
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3000"
