@@ -24,8 +24,8 @@
 1. Клонировать репозиторий:
 
 ```bash
-git clone https://github.com/rustam-rama/tic-tac-toe2.git
-cd tic-tac-toe2
+git clone https://github.com/rustam-rama/tic-tac-toe-clean.git
+cd tic-tac-toe-clean
 ```
 
 2. Установить зависимости:
