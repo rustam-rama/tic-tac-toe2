@@ -7,10 +7,19 @@
 /coverage
 src/components_for_tests/
 src/new-castle2/
+src/learn-reduce/
+src/ReduxApp.jsx
+db.json
+src/TodoApp.jsx
+src/hooks/
+src/context/
+src/components/
+
 
 # Production
 /build
 /dist
+
 
 # Misc
 .DS_Store
