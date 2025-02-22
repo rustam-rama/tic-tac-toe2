@@ -1,0 +1,129 @@
+/* Базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+  .board button {
+    width: 100px;
+    height: 100px;
+    font-size: 42px;
+    font-weight: bold;
+    background: #2d2e3d;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .board button:hover {
+    background: #373848;
+  }
+
+  .board button:active {
+    transform: scale(0.95);
+  }
+
+  /* Стили для X и O */
+  .board button:has(X) {
+    color: #9d7bff;
+  }
+
+  .board button:has(O) {
+    color: #ff7b7b;
+  }
+
+  /* Заголовок */
+  h1 {
+    color: #9d7bff;
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+
+  /* Контейнер */
+  .game-container {
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Кнопка сброса */
+  .reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #9d7bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;  /* Неактивная кнопка полупрозрачная */
+  }
+
+  .reset-button.active {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+
+  .reset-button.active:hover {
+    background: #8a6ae6;
+  }
+
+
+  .winner-message {
+    color: #9d7bff;
+    font-size: 38px;
+    margin: 20px 0;
+    font-weight: bold;
+    animation: winnerAppear 0.5s ease;
+  }
+
+  @keyframes winnerAppear {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+
+  .board button.win {
+    background: #9d7bff;
+    color: white;
+  }
+
+ 
+  .draw-message {
+    color: #9d7bff;
+    font-size: 38px;
+    margin: 20px 0;
+    font-weight: bold;
+    animation: winnerAppear 0.5s ease;
+  }
+
+/* Добавим к существующим стилям */
+.app {
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
